@@ -1,20 +1,21 @@
-//your JS code here. If required.
 const inputs = document.querySelectorAll('.code');
 
-// Automatically focus first input when page loads
-inputs[0].focus();
+// Focus the first input by default
+window.addEventListener('load', () => {
+  inputs[0].focus();
+});
 
 inputs.forEach((input, index) => {
   input.addEventListener('input', (e) => {
     const value = e.target.value;
 
-    // Only allow numeric input
+    // Allow only digits
     if (!/^[0-9]$/.test(value)) {
       e.target.value = '';
       return;
     }
 
-    // Move to next input if value entered
+    // Move to next input if exists
     if (value && index < inputs.length - 1) {
       inputs[index + 1].focus();
     }
